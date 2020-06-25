@@ -22,7 +22,7 @@
     <style type="text/css">
 
     </style>
-    <link rel="stylesheet" type="text/css" href="css/custom.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/sidebar.css" media="screen" />
 </head>
 <body>
     <div id="app">
@@ -85,15 +85,8 @@
 </div>
 </body>
 
-<script>
-    function openNav() {
-        document.getElementById("sideNavigation").style.width = "250px";
-        document.getElementById("main").style.marginLeft = "250px";
-    }
+<script src="js/sidebar.js"></script>
 
-    function closeNav() {
-        document.getElementById("sideNavigation").style.width = "0";
-        document.getElementById("main").style.marginLeft = "0";
-    }
+
 </script>
 </html>

@@ -33,4 +33,5 @@ Auth::routes();
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+Route::get('/home', 'HomeController@index')->name('home');
+/*Route::get('/', 'HomeController@showcase')->name('showcase');*/

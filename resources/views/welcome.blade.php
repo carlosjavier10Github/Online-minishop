@@ -61,11 +61,19 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .customheader{
+
+                height: 7vh;
+            }
+
         </style>
+         <link rel="stylesheet" type="text/css" href="css/sidebar.css" media="screen" />
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
+
+        <div class="flex-center position-ref full-height customheader">
+                    @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
@@ -78,6 +86,20 @@
                     @endauth
                 </div>
             @endif
+
+        </div>
+
+
+
+
+        @include('layouts.menu.sidebar')
+
+
+  <main class="py-4">
+    <div class="container">
+        <h1>AAAAAAAAAAAAAa</h1>
+    </div>
+        <div class="flex-center position-ref full-height">
 
             <div class="content">
                 <div class="title m-b-md">
@@ -96,5 +118,7 @@
                 </div>
             </div>
         </div>
+</main>
     </body>
+    <script src="js/sidebar.js"></script>
 </html>
