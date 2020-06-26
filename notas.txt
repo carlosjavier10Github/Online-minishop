@@ -1,0 +1,6 @@
+
+
+En la vista "welcome" no se corre el contenido a la derecha al abrir el menú lateral, ???
+
+tambien en welcome no funciona blade correctamente, al colocar la etiqueta "setion('content)" no se muestra en el vista pero solo en welcome, creo que tiene que ver con el hecho de que la ruta va directo a la vista y no a un controlador! me parece que tiene algo que ver con el middleware.
+
