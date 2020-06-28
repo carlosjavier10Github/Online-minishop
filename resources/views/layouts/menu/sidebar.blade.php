@@ -24,10 +24,10 @@
 </nav>
 
 <div id="main">
-  <!-- Add all your websites page content here  -->
-  <main class="py-4">
+  <!-- Add all your websites page content must be into the label-->
+
     @yield('content')
-  </main>
+
 </div>
 
 

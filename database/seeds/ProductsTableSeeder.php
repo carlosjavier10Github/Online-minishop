@@ -14,7 +14,10 @@ class ProductsTableSeeder extends Seeder
     public function run()
     {
 
-    	$product = new Product();
+
+        factory(App\Product::class,20)->create();
+
+/*    	$product = new Product();
     	$product->name = 'Piedra mata maduro';
     	$product->brand = 'Mata mierdas';
     	$product->price = 10;
@@ -36,7 +39,7 @@ class ProductsTableSeeder extends Seeder
     	$detail->detail = 'Tipo';
     	$detail->measure = null;
     	$detail->value = 'Ignea';
-    	$product->details()->save($detail);
+    	$product->details()->save($detail);*/
 
 
 
