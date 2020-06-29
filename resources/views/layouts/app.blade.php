@@ -29,9 +29,9 @@
         @include('layouts.menu.topbar')
 
 
-@include('layouts.menu.sidebar')
+        @include('layouts.menu.sidebar',['forhome'=>'true'])
 
-</div>
+    </div>
 </body>
 
 <script src="js/sidebar.js"></script>

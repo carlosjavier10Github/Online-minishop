@@ -1,30 +1,58 @@
 <template>
     <div class="container">
 
-
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                            <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                    </div>
-                                <small class="text-muted">9 mins</small>
-                                </div>
+        <div class="container">
+            <div class="col-md-4" v-for="item in list">
+                <div class="card mb-4 shadow-sm">
+                    <img src="images/descarga.png" class='card-img-top'>
+                    <div class="card-body">
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                             </div>
+                            <small class="text-muted">9 mins</small>
                         </div>
                     </div>
+                </div>
+            </div>
 
+            <infinite-loading @infinite="infiniteHandler"> </infinite-loading>
+        </div>
     </div>
 </template>
 
 <script>
-    export default {
-        mounted() {
-            console.log('Component mounted.')
+export default {
+
+    data() {
+        return{
+            list:[],
+            page:0
+        }
+    },
+
+    methods: {
+        infiniteHandler($state){
+            this.page++
+            let url= 'api/product?page='+ this.page
+
+            axios.get(url)
+            .then(response => {
+                let products = response.data.data
+
+                if (products.length) {
+                    this.list = this.list.concat(products)
+                    $state.loaded()
+                }else{
+                    $state.completed()
+                }
+
+            })
         }
     }
+
+}
 </script>
+

@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('brand');
+            $table->string('main-image');
             $table->float('price')->default(0);
             $table->timestamps();
 
