@@ -19,8 +19,19 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+
+
+Vue.component('sidebar', require('./components/menus/SideBar.vue').default);
+Vue.component('topbar', require('./components//menus/TopBar.vue').default);
+
 Vue.component('products', require('./components/ProductsComponent.vue').default);
+Vue.component('app', require('./components/AppComponent.vue').default);
 Vue.component('InfiniteLoading', require('vue-infinite-loading'));
+
+
+
+import router from './routes'
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,4 +41,6 @@ Vue.component('InfiniteLoading', require('vue-infinite-loading'));
 
 const app = new Vue({
     el: '#app',
+    router
 });
+

@@ -11,20 +11,18 @@
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/sidebar.css') }} ">
+
+
 </head>
 <body>
 
     @include('layouts.menu.topbar')
-    @include('layouts.menu.sidebar')
 
-    <div id="main">
-     <main class="py-4">
-        <div id="app">
-            <products></products>
-        </div>
-    </main>
-</div>
-<script src="{{ asset('js/app.js')}} "></script>
-<script src="{{ asset('js/sidebar.js')}} "></script>
+    <div id="app">
+
+        <app></app>
+ </div>
+ <script src="{{ asset('js/app.js')}} "></script>
+ <script src="{{ asset('js/sidebar.js')}} "></script>
 </body>
 </html>

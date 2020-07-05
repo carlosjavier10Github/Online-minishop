@@ -22,6 +22,14 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/home', function () {
+    return view('index');
+});
+
+Route::get('/profile', function () {
+    return view('profile');
+});
+
 Route::get('/test', function () {
 
 	$product = Product::find(1);
@@ -33,5 +41,5 @@ Auth::routes();
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+/*Route::get('/home', 'HomeController@index')->name('home');*/
 /*Route::get('/', 'HomeController@showcase')->name('showcase');*/

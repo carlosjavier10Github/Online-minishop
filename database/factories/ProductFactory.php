@@ -23,6 +23,7 @@ $factory->define(Product::class, function (Faker $faker) {
 
     return [
         'name' => $name,
+        'slug' => $name,
         'brand' => $faker->name,
         'price' => rand(1,99),
         'main-image' => 'descarga.png',
