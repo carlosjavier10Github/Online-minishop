@@ -22,9 +22,9 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/home', function () {
+/*Route::get('/home', function () {
     return view('index');
-});
+});*/
 
 Route::get('/profile', function () {
     return view('profile');
@@ -33,13 +33,16 @@ Route::get('/profile', function () {
 Route::get('/test', function () {
 
 	$product = Product::find(1);
+	$path = app_path();
 
-   return view('test',['product' => $product]);
+   return view('test',['product' => $product, 'path' => $path]);
 });
 
 Auth::routes();
 
 Auth::routes(['verify' => true]);
+
+Route::get('user-id', 'SessionController@userLogued');
 
 /*Route::get('/home', 'HomeController@index')->name('home');*/
 /*Route::get('/', 'HomeController@showcase')->name('showcase');*/

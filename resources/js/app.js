@@ -20,17 +20,25 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 
-
+// Navbar
 Vue.component('sidebar', require('./components/menus/SideBar.vue').default);
 Vue.component('topbar', require('./components//menus/TopBar.vue').default);
 
+
+//Auth
+Vue.component('register', require('./components//auth/Register.vue').default);
+Vue.component('login', require('./components//auth/login.vue').default);
+
+
 Vue.component('products', require('./components/ProductsComponent.vue').default);
 Vue.component('app', require('./components/AppComponent.vue').default);
+Vue.component('profile', require('./components/ProfileComponent.vue').default);
 Vue.component('InfiniteLoading', require('vue-infinite-loading'));
 
 
 
 import router from './routes'
+import fullPath  from './utils'
 
 
 /**

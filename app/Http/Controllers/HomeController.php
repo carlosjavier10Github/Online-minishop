@@ -31,7 +31,4 @@ class HomeController extends Controller
         return 'AAAAAAAAAAAAAAAAAAAAAAAAAAA';
     }
 
-
-
-
 }

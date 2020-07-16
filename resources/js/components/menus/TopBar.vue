@@ -1,5 +1,7 @@
 <template>
 	<div>   <!-- NO ESTA EN USO, PARA FUTURA IMPLEMENTACION -->
+		<register></register>
+		<login></login>
 		<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
 			<div class="container">
 				<a class="navbar-brand" href="#">
@@ -22,31 +24,35 @@
 						<!-- Authentication Links -->
 						<!--  @guest -->
 						<div v-if="guest">
+
 							<li class="nav-item">
-								<a class="nav-link" href="#"> Login</a>
+								<a class="nav-link" href="#" data-toggle="modal" data-target="#modal-login" v-html="lang.login"> </a>
 							</li>
 							<!-- @if (Route::has('register')) -->
 							<li class="nav-item">
-								<a class="nav-link" href="#"> Registrar </a>
+								<a href='#' class="nav-link text-dark" data-toggle="modal" data-target="#modal-register">
+									{{ lang.register }}
+								</a>
 							</li>
 							<!--    @endif -->
 						</div>
 						<!--      @else -->
-						<li class="nav-item dropdown" v-else>
-							<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-								<!-- {{ Auth::user()->name }} --> name <span class="caret"></span>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								{{user.name}}
 							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<!-- 	<a class="dropdown-item" href="#">Action</a> -->
+								<router-link :to= "{name: 'profile'}"> {{ lang.profile}} </router-link>
 
-							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="logout"
-								onclick="event.preventDefault();
-								document.getElementById('logout-form').submit();">
-								<!-- {{ __('Logout') }} --> logout
+								<a class="dropdown-item" href="#"
+								onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+								{{ lang.logout}}
+
+								<form id="logout-form" action="" method="POST" style="display: none;">
+									@csrf
+								</form>
 							</a>
-
-							<form id="logout-form" action="" method="POST" style="display: none;">
-								<!-- @csrf -->
-							</form>
 						</div>
 					</li>
 					<!-- @endguest -->
@@ -54,26 +60,57 @@
 			</div>
 		</div>
 	</nav>
-
-
-
 </div>
 </template>
-
 <script>
+import  {fullPath} from '../../utils'
+import { language } from '../../utils'
 export default {
 
 	data() {
 		return{
-			guest:true
-
+			guest: true,
+			user:{},
+			lang: language.topbar
 		}
 	},
 
+	created(){
+		let vm= this
+		vm.getSession()
+	},
 	methods: {
+
+		getSession(){
+			let vm = this
+			let url=fullPath+'/user-id'
+
+
+			axios.get(url).then(function(response){
+				if(response.data.user){
+					vm.guest=false
+					vm.user = response.data.user
+
+					console.log(vm.user.email)
+					if (vm.user.name == null || vm.user.name=="")
+					{
+					console.log("ENTRO A LA MIERDA")
+						vm.user.name=vm.user.email
+					}
+				}
+
+			})
+			.catch(function(err){
+
+				console.log('Error Desconocido en TopBar')
+				console.log(err)
+			});
+		},
 
 	}
 
 }
+
+
 </script>
 

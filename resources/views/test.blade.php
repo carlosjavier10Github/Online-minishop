@@ -42,7 +42,7 @@
     <div class="album py-5 bg-light">
         <div class="container">
 
-            <H1>EN ESTA VISTA DE PRUEBAS  VI ESTO ... QUE PARECE QUE LA COSA VA POR LA CLASE "row"</H1>
+            <H1> {{ $path }} </H1>
 
           <div class='row' >
 @for ($i = 0; $i < 20 ; $i++)
