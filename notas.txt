@@ -1,0 +1,22 @@
+LIMPIAR CACHE
+php artisan config:clear; php artisan cache:clear;php artisan route:clear; php artisan view:clear;php artisan config:cache
+
+
+
+
+En la vista "welcome" no se corre el contenido a la derecha al abrir el menú lateral, ???
+
+tambien en welcome no funciona blade correctamente, al colocar la etiqueta "setion('content)" no se muestra en el vista pero solo en welcome, creo que tiene que ver con el hecho de que la ruta va directo a la vista y no a un controlador! me parece que tiene algo que ver con el middleware.
+
+topbar que no se ve como debe verse
+
+arreglar modal de registrar
+TERMINAR REVISION DE CAMINOS AL REGISTRAR...
+
+
+<router-link :to= "{name: 'home'}">Home</router-link>    en curso de laravel 5.7, bootstrap y vue video 12 minuto 3:30
+
+<transition name="slide-fade" mode="out-in"> </transition>  en curso de laravel 5.7, bootstrap y vue video 12 minuto 4:00
+
+
+
